@@ -10,6 +10,7 @@ env:
   MONGODB_DB_NAME: mongodb
 jobs:
   test:
+    environment: testing
     env:
       MONGODB_CLUSTER_ADDRESS: 'cluster0.wpq7lwk.mongodb.net'
       MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
@@ -30,6 +31,7 @@ jobs:
         run: npm start & npx wait-on http://127.0.0.1:$PORT
       - name: Run tests
         run: npm test
+        # value showing from repo environment secret
       - name: Output information
         run: |
           echo "MONGODB_USERNAME ${{ env.MONGODB_USERNAME }}"
